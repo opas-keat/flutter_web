@@ -9,6 +9,8 @@ import 'package:flutter_web/pages/overview/widgets/revenue_section_small.dart';
 import 'package:flutter_web/widgets/customText.dart';
 import 'package:get/get.dart';
 
+import 'widgets/avaliable_drivers.dart';
+
 class OverViewPage extends StatelessWidget {
   const OverViewPage({Key? key}) : super(key: key);
 
@@ -44,7 +46,8 @@ class OverViewPage extends StatelessWidget {
             if (!ResponsiveWidget.isSmallScreen(context))
               const RevenueSectionLarge()
             else
-              const RevenueSerctionSmall()
+              const RevenueSerctionSmall(),
+            AvaliableDrivers()
           ],
         )),
       ],
