@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web/constants/style.dart';
 import 'package:flutter_web/controllers/menu_controller.dart';
 import 'package:flutter_web/controllers/navigation_controller.dart';
+import 'package:flutter_web/pages/404/error_page.dart';
+import 'package:flutter_web/pages/authntication/authentication.dart';
+import 'package:flutter_web/pages/clients/clients.dart';
+import 'package:flutter_web/pages/drivers/drivers.dart';
+import 'package:flutter_web/pages/overview/overview.dart';
+import 'package:flutter_web/routing/routes.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -20,6 +26,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      initialRoute: authenticationPageRoute,
+      unknownRoute: GetPage(
+        name: "/not-found",
+        page: () => const PageNotFound(),
+        transition: Transition.fadeIn,
+      ),
+      getPages: [
+        GetPage(name: rootRoute, page: () => SiteLayout()),
+        GetPage(
+            name: authenticationPageRoute, page: () => AuthenticationPage()),
+      ],
       debugShowCheckedModeBanner: false,
       title: "Dash",
       theme: ThemeData(
@@ -34,7 +51,6 @@ class MyApp extends StatelessWidget {
             TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
           }),
           primaryColor: Colors.blue),
-      home: SiteLayout(),
     );
   }
 }
